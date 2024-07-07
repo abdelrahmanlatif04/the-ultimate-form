@@ -141,6 +141,7 @@ export default {
       this.errorMessage = null;
 
       try {
+        let t = new Date();
         await fetch(
           "https://abdellatif-dummy-form-default-rtdb.firebaseio.com/appliers.json",
           {
@@ -151,6 +152,7 @@ export default {
               age: this.age,
               email: this.email,
               message: this.message,
+              time: t,
             }),
           }
         );
