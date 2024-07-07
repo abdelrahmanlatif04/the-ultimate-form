@@ -82,6 +82,10 @@
           Submit
         </button>
       </div>
+
+      <p v-if="successMessage" class="text-green-500 text-xs mt-4 text-center">
+        {{ successMessage }}
+      </p>
       <p v-if="errorMessage" class="text-red-500 text-xs mt-4 text-center">
         {{ errorMessage }}
       </p>
@@ -137,8 +141,7 @@ export default {
       this.errorMessage = null;
 
       try {
-        let time = new Date();
-        fetch(
+        await fetch(
           "https://abdellatif-dummy-form-default-rtdb.firebaseio.com/appliers.json",
           {
             method: "POST",
@@ -148,7 +151,6 @@ export default {
               age: this.age,
               email: this.email,
               message: this.message,
-              time: time,
             }),
           }
         );
